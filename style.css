@@ -1,0 +1,278 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body, html {
+    width: 100%;
+    height: 100%;
+    font-family: "Courier New", monospace;
+    line-height: 1.6;
+    background: #000;
+    color: #00ff00;
+    overflow-x: hidden;
+}
+
+/* Face Scanning Animation */
+#scan-animation {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.9);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 1000;
+    animation: scanFadeOut 1.5s ease-in-out forwards; /* Animation duration */
+}
+
+@keyframes scanFadeOut {
+    0% { opacity: 1; }
+    90% { opacity: 1; }
+    100% { opacity: 0; visibility: hidden; }
+}
+
+.scan-line {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 2px;
+    background: #00ff00;
+    box-shadow: 0 0 10px #00ff00;
+    animation: scan 1s linear infinite; /* Faster scanning line */
+}
+
+@keyframes scan {
+    0% { top: 0; }
+    100% { top: 100%; }
+}
+
+.scan-overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(
+        to bottom,
+        rgba(0, 255, 0, 0.1),
+        rgba(0, 255, 0, 0.05)
+    );
+}
+
+.scan-text {
+    font-size: 1.5rem;
+    color: #00ff00;
+    text-shadow: 0 0 10px #00ff00;
+    animation: blink 1s infinite;
+}
+
+@keyframes blink {
+    0%, 100% { opacity: 1; }
+    50% { opacity: 0.5; }
+}
+
+/* Website Content */
+#website-content {
+    opacity: 0; /* Start fully transparent */
+    animation: fadeIn 0.5s ease-in-out 1.5s forwards; /* Delay matches scan animation */
+}
+
+@keyframes fadeIn {
+    0% { opacity: 0; }
+    100% { opacity: 1; }
+}
+
+/* Cyber Terminal */
+#cyber-terminal {
+    position: fixed;
+    top: 20px;
+    left: 20px;
+    background: rgba(0, 0, 0, 0.8);
+    border: 1px solid #00ff00;
+    border-radius: 5px;
+    padding: 10px;
+    width: 300px;
+    box-shadow: 0 0 10px rgba(0, 255, 0, 0.5);
+    animation: terminalFadeIn 2s ease-in-out;
+}
+
+@keyframes terminalFadeIn {
+    0% { opacity: 0; transform: translateY(-20px); }
+    100% { opacity: 1; transform: translateY(0); }
+}
+
+.terminal-header {
+    display: flex;
+    justify-content: space-between;
+    font-size: 0.9rem;
+    color: #00ff00;
+    margin-bottom: 10px;
+}
+
+.terminal-status {
+    color: #00ff00;
+    animation: blink 1s infinite;
+}
+
+.terminal-body {
+    font-size: 0.8rem;
+    color: #00ff00;
+}
+
+.terminal-text {
+    margin: 5px 0;
+}
+
+/* Cyber Header */
+.cyber-header {
+    text-align: center;
+    padding: 40px 0;
+    background: rgba(0, 0, 0, 0.8);
+    border-radius: 15px;
+    margin: 20px auto;
+    width: 90%;
+    max-width: 800px;
+    box-shadow: 0 0 20px rgba(0, 255, 0, 0.5);
+    animation: headerFadeIn 2s ease-in-out;
+}
+
+@keyframes headerFadeIn {
+    0% { opacity: 0; transform: translateY(-20px); }
+    100% { opacity: 1; transform: translateY(0); }
+}
+
+.cyber-header h1 {
+    font-size: 3rem;
+    margin-bottom: 10px;
+    text-shadow: 0 0 10px #00ff00;
+}
+
+.cyber-header p {
+    font-size: 1.2rem;
+    opacity: 0.8;
+}
+
+/* Cyber Upload Section */
+.cyber-upload {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin: 40px auto;
+    width: 90%;
+    max-width: 800px;
+    animation: uploadFadeIn 2s ease-in-out;
+}
+
+@keyframes uploadFadeIn {
+    0% { opacity: 0; transform: translateY(-20px); }
+    100% { opacity: 1; transform: translateY(0); }
+}
+
+.upload-container {
+    background: rgba(0, 0, 0, 0.8);
+    padding: 30px;
+    border-radius: 15px;
+    text-align: center;
+    box-shadow: 0 0 20px rgba(0, 255, 0, 0.5);
+    width: 100%;
+}
+
+.custom-file-upload {
+    display: inline-block;
+    padding: 15px 30px;
+    background: #00ff00;
+    color: #000;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background 0.3s, transform 0.3s;
+    font-size: 1rem;
+    margin-bottom: 20px;
+}
+
+.custom-file-upload:hover {
+    background: #00cc00;
+    transform: scale(1.05);
+}
+
+.cyber-button {
+    padding: 15px 30px;
+    background: #ff8888;
+    color: rgb(0, 0, 0);
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background 0.3s, transform 0.3s;
+    font-size: 1rem;
+    width: 100%;
+}
+
+.cyber-button:hover {
+    background: #ff00008b;
+    color: white;
+    transform: scale(1.05);
+}
+
+/* Cyber Result Section */
+.cyber-result {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin: 40px auto;
+    width: 90%;
+    max-width: 800px;
+    animation: resultFadeIn 2s ease-in-out;
+}
+
+@keyframes resultFadeIn {
+    0% { opacity: 0; transform: translateY(-20px); }
+    100% { opacity: 1; transform: translateY(0); }
+}
+
+#result-container {
+    background: rgba(0, 0, 0, 0.8);
+    padding: 30px;
+    border-radius: 15px;
+    text-align: center;
+    box-shadow: 0 0 20px rgba(0, 255, 0, 0.5);
+    width: 100%;
+}
+
+#videoPreview ,#canvasId {
+    max-width: 100%;
+    border-radius: 10px;
+    margin-bottom: 20px;
+    margin-left: auto;
+    margin-right: auto;
+
+}
+
+#result {
+    font-size: 1.4rem;
+    opacity: 0.9;
+}
+
+/* Cyber Footer */
+.cyber-footer {
+    text-align: center;
+    padding: 20px 0;
+    background: rgba(0, 0, 0, 0.8);
+    margin-top: 40px;
+    box-shadow: 0 0 20px rgba(0, 255, 0, 0.5);
+    animation: footerFadeIn 2s ease-in-out;
+}
+
+@keyframes footerFadeIn {
+    0% { opacity: 0; transform: translateY(20px); }
+    100% { opacity: 1; transform: translateY(0); }
+}
+
+.cyber-footer h3 {
+    font-size: 1rem;
+    opacity: 0.8;
+}

@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Deepfake Detector</title>
+    <link rel="icon" type="image/png" href="fevicon.png">
+    <script src="https://cdn.jsdelivr.net/npm/@tensorflow/tfjs"></script>
+    <link rel="stylesheet" href="style.css" />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css"
+    />
+  </head>
+  <body>
+    <!-- Face Scanning Animation -->
+    <div id="scan-animation">
+      <div class="scan-overlay"></div>
+      <div class="scan-line"></div>
+      <div class="scan-text">Loading Detection System...</div>
+    </div>
+
+    <!-- Website Content -->
+    <div id="website-content">
+      <!-- Cyberpunk Terminal Interface -->
+      <div id="cyber-terminal">
+        <div class="terminal-header">
+          <span class="terminal-title">Deepfake Detector v1.0</span>
+          <span class="terminal-status">[ONLINE]</span>
+        </div>
+        <div class="terminal-body">
+          <p class="terminal-text">
+            > Initializing Deepfake Detection System...
+          </p>
+          <p class="terminal-text">
+            > Welcome, User. Upload media to begin analysis.
+          </p>
+        </div>
+      </div>
+
+      <!-- Main Content -->
+      <main>
+        <header class="cyber-header animate__animated animate__fadeInDown">
+          <h1>Deepfake Detector</h1>
+          <p>Unmask the truth in the digital void.</p>
+        </header>
+
+        <section
+          id="upload-section"
+          class="cyber-upload animate__animated animate__fadeInUp"
+        >
+          <div class="upload-container">
+            <label for="upload" class="custom-file-upload">
+              <span>📁 Upload Media</span>
+            </label>
+            <input
+              type="file"
+              id="upload"
+              name="file"
+              accept="image/*,video/*"
+              required
+              style="display: none"
+            />
+            <button type="button" id="detectButton" class="cyber-button">
+              🔍 Analyze for Deepfakes
+            </button>
+          </div>
+        </section>
+
+        <section
+          id="result-section"
+          class="cyber-result animate__animated animate__fadeIn"
+        >
+          <div id="result-container">
+            <video
+              id="videoPreview"
+              autoplay
+              hidden
+              style="max-width: 100%; height: auto; display: block"
+            ></video>
+            <img id="canvasId" alt="Uploaded Media" src="images.jpeg" />
+
+            <p id="result">> Analysis Result: Awaiting input...</p>
+          </div>
+        </section>
+      </main>
+      <!-- Footer -->
+      <footer class="cyber-footer animate__animated animate__fadeInUp">
+        <h3>Team Illusion &#xA9; 2024 | [SYSTEM ACTIVE]</h3>
+      </footer>
+    </div>
+  </body>
+  <script type="module" src="script.js"></script>
+</html>
