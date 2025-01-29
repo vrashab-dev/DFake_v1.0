@@ -2,12 +2,14 @@ let loadedModel = null; // Define the loadedModel globally
 let processing = false; // Global flag to track ongoing processing
 const outputBox = document.getElementById("result-container");
 const resultDiv = document.getElementById("result");
+let modelLoaded = false;
 // Function to load the model
 async function loadModel() {
   console.log("Checking if model is already loaded...");
   // Check if the model is already loaded
   if (loadedModel) {
     console.log("Model already loaded:", loadedModel);
+    modelLoaded = true;
     return loadedModel; // Return the already loaded model
   }
 
@@ -35,6 +37,7 @@ async function loadModel() {
     throw error;
   }
 }
+const model = await loadModel();
 
 // Function to preprocess an image (for both photo and video frames)
 function preprocessImage(imgElement, targetSize = [256, 256]) {
@@ -162,6 +165,7 @@ async function predictVideo(model, videoElement) {
   console.log("Not enough frames classified as deepfake. Returning real.");
   return "Real"; // Return "Real" if video is classified as real
 }
+
 document.getElementById("detectButton").addEventListener("click", async () => {
   resultDiv.style.color = "green"
   outputBox.style.boxShadow = "0 0 20px rgba(0, 255, 0, 0.5)";
@@ -190,6 +194,8 @@ document.getElementById("detectButton").addEventListener("click", async () => {
   processing = true; // Set processing flag to true
 
   if (fileType === "video") {
+
+    if(loadModel){
     // Hide the image and show the video element
     imageElement.style.display = "none";
     videoElement.style.display = "block";
@@ -206,7 +212,7 @@ document.getElementById("detectButton").addEventListener("click", async () => {
       });
 
       // Load the model and process the video
-      const model = await loadModel();
+      
       const result = await predictVideo(model, videoElement);
 
       // Display prediction result
@@ -224,6 +230,9 @@ document.getElementById("detectButton").addEventListener("click", async () => {
       processing = false;
       URL.revokeObjectURL(videoElement.src);
     }
+  }else{
+
+  }
   } else if (fileType === "image") {
     // Hide the video and show the image element
     videoElement.style.display = "none";
@@ -239,7 +248,7 @@ document.getElementById("detectButton").addEventListener("click", async () => {
       });
 
       // Load the model and process the image
-      const model = await loadModel();
+    
       const result = await predictImage(model, imageElement);
 
       // Display prediction result
