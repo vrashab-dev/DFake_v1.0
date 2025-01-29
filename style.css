@@ -26,7 +26,7 @@ body, html {
     justify-content: center;
     align-items: center;
     z-index: 1000;
-    animation: scanFadeOut 1.5s ease-in-out forwards; /* Animation duration */
+    animation: scanFadeOut 3s ease-in-out forwards; /* Animation duration */
 }
 
 @keyframes scanFadeOut {
@@ -79,7 +79,7 @@ body, html {
 /* Website Content */
 #website-content {
     opacity: 0; /* Start fully transparent */
-    animation: fadeIn 0.5s ease-in-out 1.5s forwards; /* Delay matches scan animation */
+    animation: fadeIn 3s ease-in-out 2s forwards; /* Delay matches scan animation */
 }
 
 @keyframes fadeIn {
